@@ -1,0 +1,39 @@
+@echo off
+echo =================================================
+echo   MEMULAI 5 NODE E-VOTING (VERSI FINAL)
+echo   JANGAN TUTUP JENDELA YANG MUNCUL
+echo =================================================
+
+:: Masuk ke folder kerja
+cd /d "C:\Users\62812\OneDrive\Dokumen\tugas mercu\tugas mercu semester 7\CAPSTONE\evoting-chain"
+
+:: Setting Enode Node 1
+set BOOTNODE=enode://f0a6d3ceb8ca60fda1faf2a496de8e7a2514758cbe9366aadb3d6f10fd07270e379dacd25057c1b9184f0f28d11e8cd0246f321631f170d864ae9f9173818ff3@127.0.0.1:30303
+
+:: 1. JALANKAN NODE 1
+:: Perubahan: Menambah modul 'personal' dan membuka kunci otomatis
+echo Menyalakan Node 1...
+start "NODE 1 (MINER)" cmd /k geth --datadir node1 --port 30303 --http --http.port 8545 --http.corsdomain "*" --http.api "admin,eth,miner,net,txpool,personal,web3" --networkid 12345 --unlock "0xD170E75a3cA5e7D5Bda6FC54564755a2fca347c4" --password password.txt --allow-insecure-unlock --mine --miner.etherbase "0xD170E75a3cA5e7D5Bda6FC54564755a2fca347c4" console
+
+:: Tunggu 5 detik
+timeout /t 5
+
+:: 2. Jalankan NODE 2
+echo Menyalakan Node 2...
+start "NODE 2" geth --datadir node2 --port 30304 --http --http.port 8546 --authrpc.port 8552 --networkid 12345 --bootnodes %BOOTNODE% --ipcpath geth2 console
+
+:: 3. Jalankan NODE 3
+echo Menyalakan Node 3...
+start "NODE 3" geth --datadir node3 --port 30305 --http --http.port 8547 --authrpc.port 8553 --networkid 12345 --bootnodes %BOOTNODE% --ipcpath geth3 console
+
+:: 4. Jalankan NODE 4
+echo Menyalakan Node 4...
+start "NODE 4" geth --datadir node4 --port 30306 --http --http.port 8548 --authrpc.port 8554 --networkid 12345 --bootnodes %BOOTNODE% --ipcpath geth4 console
+
+:: 5. Jalankan NODE 5
+echo Menyalakan Node 5...
+start "NODE 5" geth --datadir node5 --port 30307 --http --http.port 8549 --authrpc.port 8555 --networkid 12345 --bootnodes %BOOTNODE% --ipcpath geth5 console
+
+echo.
+echo SEMUA NODE SUDAH DINYALAKAN!
+pause

@@ -1,0 +1,4 @@
+admin.peers
+admin.peers.lengthadmin.peers.length
+admin.peers.length
+admin.addPeer("enode://f0a6d3c...blablabla...@127.0.0.1:30303?discport=0")
