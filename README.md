@@ -1,65 +1,155 @@
-📌 Overview
+# Hybrid Blockchain E-Voting System with AES-256 and PoA (Clique)
 
-This project implements a private Ethereum-based blockchain voting system using a 10-node Geth network simulation.
-Votes are encrypted using AES-256 before being submitted to the blockchain to ensure confidentiality and integrity using PoA consensus.
+## 📌 Overview
 
-🏗 Architecture
+This project implements a **private Ethereum-based blockchain voting system** using a 10-node Geth network simulation with **Proof of Authority (PoA - Clique consensus)**.
 
-Private Ethereum Network (Geth)
+The system adopts a hybrid architecture where:
+- Vote transactions are stored **on-chain**
+- Supporting application data is managed **off-chain**
+- Vote data is encrypted using **AES-256** before submission to the blockchain
 
-10 Validator Nodes
+The goal of this project is to enhance **confidentiality, integrity, and immutability** in electronic voting systems.
 
-Custom genesis.json
+---
 
-Solidity Smart Contract (voting.sol)
+## 🎯 Objectives
 
-JavaScript result parser
+- Build a private Ethereum network using Geth
+- Implement PoA (Clique) consensus for controlled validator authority
+- Secure votes using AES-256 encryption
+- Ensure tamper-resistant vote storage
+- Simulate a 10-node blockchain environment
 
-Batch automation scripts
+---
 
-📂 Project Structure
+## 🏗 System Architecture
 
-node1 - node10 → Geth nodes
+The system consists of three major layers:
 
-genesis.json → Custom blockchain configuration
+### 1️⃣ Application Layer
+- Voting Web Application
+- Admin (Election Authority)
+- Web3 integration for blockchain communication
 
-voting.sol → Smart contract
+### 2️⃣ Off-Chain Layer
+- Database (non-critical metadata storage)
 
-artifacts/ → Compiled contract files
+### 3️⃣ On-Chain Layer
+- Private Ethereum Network (Geth)
+- 10 Nodes (Node1–Node10)
+- Node1 acts as initial sealer
+- PoA (Clique) consensus mechanism
+- Smart Contract (`voting.sol`)
 
-setup.bat → Network initialization
+---
 
-start_all.bat → Start all nodes
+## 🖼 Architecture Diagram
 
-show_results.js → Display vote results
+<img width="1408" height="1056" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/4223ff43-7f5f-4db1-b1c2-ee52aa156eb3" />
 
-🚀 How to Run
+> The voting request flows from the web application through Web3 to the private blockchain network.  
+> Encrypted votes are validated by PoA authority nodes and permanently stored on-chain.
 
-Initialize nodes:
+---
 
+## 📂 Project Structure
+
+blockchain-evoting/
+│
+├── node1 - node10/ # Geth node data directories
+├── artifacts/ # Compiled smart contract files
+├── genesis.json # Custom blockchain configuration (PoA Clique)
+├── voting.sol # Smart contract implementation
+├── setup.bat # Network initialization script
+├── start_all.bat # Start all 10 nodes
+├── show_results.js # Display voting results
+├── show_results.bat # Execute result script
+└── .gitignore
+
+
+---
+
+## ⚙ Consensus Mechanism
+
+This project uses:
+
+**Proof of Authority (PoA) - Clique**
+
+Why PoA?
+- Suitable for private networks
+- Faster block confirmation
+- Controlled validator authority
+- Energy-efficient (no mining competition)
+
+Node1 is configured as the initial sealer.
+
+---
+
+## 🚀 How to Run
+
+### 1️⃣ Initialize the blockchain network
 setup.bat
 
 
-Start all nodes:
-
+### 2️⃣ Start all nodes
 start_all.bat
 
 
-Deploy smart contract
+### 3️⃣ Deploy the smart contract
+Deploy `voting.sol` using Remix or CLI.
 
-Run:
-
+### 4️⃣ View voting results
 show_results.bat
 
-🔐 Security Features
 
-AES-256 encryption before transaction submission
+---
 
-Decentralized validation
+## 🔐 Security Features
 
-Immutable vote storage
+- AES-256 encryption before blockchain submission
+- Immutable vote storage on private Ethereum chain
+- Decentralized validation via PoA
+- Tamper-resistant transaction logging
 
+---
 
-ARCHITECTURE DIAGRAM:
+## 🧪 Network Configuration
 
-<img width="1408" height="1056" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/4223ff43-7f5f-4db1-b1c2-ee52aa156eb3" />
+- Total Nodes: 10
+- Consensus: Clique (PoA)
+- Private Chain ID: (define if needed)
+- Custom genesis configuration
+
+---
+
+## 💡 Key Contributions
+
+- Hybrid on-chain/off-chain voting architecture
+- AES-256 + Blockchain integration
+- Multi-node PoA network simulation
+- Automation via batch scripts
+- Academic-ready blockchain experiment setup
+
+---
+
+## 📖 Technologies Used
+
+- Geth (Go Ethereum)
+- Solidity
+- Web3.js
+- JavaScript
+- Batch scripting
+- AES-256 cryptography
+
+---
+
+## 📌 Future Improvements
+
+- Dockerized multi-node deployment
+- REST API backend integration
+- Frontend UI enhancement
+- Advanced key management
+- Formal security evaluation
+
+---
