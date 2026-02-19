@@ -153,3 +153,9 @@ show_results.bat
 - Formal security evaluation
 
 ---
+
+<img width="956" height="476" alt="node 1-10 ss" src="https://github.com/user-attachments/assets/3335b52a-0784-4c2c-92ad-dc16b7cbb676" />
+
+<img width="531" height="468" alt="Bulletin Board" src="https://github.com/user-attachments/assets/5125d702-5e47-4849-966b-e0b7339a62dc" />
+
+
